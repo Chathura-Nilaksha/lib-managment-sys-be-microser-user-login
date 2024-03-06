@@ -4,17 +4,19 @@ import edu.icet.dto.UserDto;
 import edu.icet.entity.UserEntity;
 import edu.icet.repository.UserRepository;
 import edu.icet.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+@RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
-    ModelMapper modelMapper;
+    final ModelMapper modelMapper;
 
     @Override
     public ResponseEntity<String> addUser(UserDto userDto) {

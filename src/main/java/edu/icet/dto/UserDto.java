@@ -21,4 +21,5 @@ public class UserDto {
     private String country;
     private String contactNumber;
     private String email;
+    private String password;
 }

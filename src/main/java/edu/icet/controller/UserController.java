@@ -1,8 +1,10 @@
 package edu.icet.controller;
 
+import edu.icet.dto.LoginDto;
 import edu.icet.dto.UserDto;
 import edu.icet.entity.UserEntity;
 import edu.icet.repository.UserRepository;
+import edu.icet.service.LoginService;
 import edu.icet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +17,17 @@ public class UserController {
     @Autowired
     UserService userService;
     @Autowired
+    LoginService loginService;
+    @Autowired
     UserRepository userRepository;
 
     @PostMapping("/add")
     public ResponseEntity<String> addUser(@RequestBody UserDto userDto){
+        loginService.addLoginData(new LoginDto(userDto.getEmail(), userDto.getPassword()));
         return userService.addUser(userDto);
     }
+
+
     @GetMapping("/find-by-user-name/{userName}")
     public UserEntity findByUserName(@PathVariable String userName){
         return userRepository.findByUserName(userName);
