@@ -13,9 +13,9 @@ public class LoginController {
     LoginService loginService;
     @PostMapping("/login-validation")
     public ResponseEntity<String> loginValidation(@RequestBody LoginDto loginDto){
-
         return loginService.loginValidation(loginDto) ?
-                    ResponseEntity.ok("User validation successful"):
-                    ResponseEntity.ofNullable("User Email is not available in the system");
+                    ResponseEntity.ok("User validation is successful"):
+                    ResponseEntity.ofNullable("User Email is not available in the our system. " +
+                            "Please enter a valid Email address");
     }
 }
