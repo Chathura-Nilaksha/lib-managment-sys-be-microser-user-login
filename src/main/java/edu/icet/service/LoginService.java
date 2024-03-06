@@ -6,4 +6,6 @@ public interface LoginService {
 
     void addLoginData(LoginDto loginDto);
 
+    boolean loginValidation(LoginDto loginDto);
+
 }
